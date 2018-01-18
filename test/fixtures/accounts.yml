@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+no_name:
+  name: 
+  subdomain: noname
+
+no_subdomain:
+  name: Empty Subdomain
+  subdomain: 
+
+two_alpha_subdomain:
+  name: Two Alpha Subdomain
+  subdomain: ab
+
+all_dashes_subdomain:
+  name: All Dashes Subdomain
+  subdomain: ---
+
+ending_dash_subdomain:
+  name: Ending Dash Subdomain
+  subdomain: ab-
+
+starting_dash_subdomain:
+  name: Starting Dash Subdomain
+  subdomain: -ab
+
+starting_numeric_subdomain:
+  name: Starting Numeric Subdomain
+  subdomain: 1abc
+
+ending_numeric_subdomain:
+  name: Ending Numeric Subdomain
+  subdomain: abc1
+
+three_alpha_subdomain:
+  name: Three Alpha Subdomain
+  subdomain: abc
+
+dash_separated_subdomain:
+  name: Dash Separated Subdomain
+  subdomain: a-b1c
