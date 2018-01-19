@@ -55,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # haml templating
 gem 'haml', '~> 5.0', '>= 5.0.4'
+
+# authentication and authorization
+gem 'devise', '~> 4.4'

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: three_alpha_subdomain
+  user: john_doe
+  role: <%= SYSTEM_ROLES.first %>
+
+two:
+  account: three_alpha_subdomain
+  user: jane_doe
+  role: <%= SYSTEM_ROLES.second %>

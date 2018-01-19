@@ -1,0 +1,18 @@
+= form_for @account, url: account_path do |f|
+  = f.label :name
+  = f.text_field :name
+  = f.label :subdomain
+  = f.text_field :subdomain
+  = f.fields_for :owner do |fo|
+    = fo.label :email
+    = fo.email_field :email
+    = fo.label :first_name
+    = fo.text_field :first_name
+    = fo.label :last_name
+    = fo.text_field :last_name
+    = fo.label :password
+    = fo.password_field :password
+    = fo.label :password_confirmation
+    = fo.password_field :password_confirmation
+  = f.submit
+      
