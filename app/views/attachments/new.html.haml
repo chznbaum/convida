@@ -1,0 +1,13 @@
+= form_for @attachment, url: attachment_path do |f|
+  = f.hidden_field :user_id, value: current_user.id
+  = f.label :attachment_upload, "Select image"
+  = f.file_field :attachment_upload
+  = f.hidden_field :attachment_upload_cache
+  = f.label :alt
+  = f.text_field :alt
+  = f.label :caption
+  = f.text_field :caption
+  = f.hidden_field :status, value: "Approved"
+  = f.submit
+= link_to "Cancel", subdomain_root_url
+      

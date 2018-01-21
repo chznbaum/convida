@@ -1,0 +1,28 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+landscape:
+  account: three_alpha_subdomain
+  user: jane_doe
+  attachment_upload: https://via.placeholder.com/1280x920
+  content_type: photo
+  alt: photo alt text
+  caption: This is a photo!
+  status: 1
+
+portrait:
+  account: three_alpha_subdomain
+  user: jane_doe
+  attachment_upload: https://via.placeholder.com/920x1280
+  content_type: video
+  alt: video alt text
+  caption: This is a video!
+  status: 1
+
+square:
+  account: three_alpha_subdomain
+  user: john_doe
+  attachment_upload: https://via.placeholder.com/1280x1280
+  content_type: photo
+  alt: photo alt text
+  caption: This is a photo!
+  status: 1

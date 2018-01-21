@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   devise_for :users
   resource :account, only: [:new, :create]
 
+  resource :attachment, only: [:new, :create]
+
   constraints SubdomainRequired do
     root to: 'dashboards#show', as: 'subdomain_root'
   end

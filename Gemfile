@@ -58,3 +58,8 @@ gem 'haml', '~> 5.0', '>= 5.0.4'
 
 # authentication and authorization
 gem 'devise', '~> 4.4'
+
+# photo/video uploading and manipulation
+gem 'carrierwave', '~> 1.2', '>= 1.2.2'
+gem 'mini_magick', '~> 4.8'
+gem 'carrierwave-imageoptimizer', '~> 1.4'

@@ -1,2 +1,11 @@
-%h1= "Dashboard"
+%h1= "#{@account.name} Dashboard"
+= link_to "Upload photo", new_attachment_path
 = link_to "Log out", destroy_user_session_path, method: :delete
+%h2= "Recent Uploads"
+- @attachments.each do |attachment|
+  %figure.thumbnail
+    - if attachment.content_type.include? 'image'
+      = image_tag attachment.attachment_upload.thumbnail, alt: attachment.alt, class: 'thumbnail__image'
+    - elsif attachment.content_type.include? 'video'
+      = video_tag attachment.attachment_upload, controls: true, class: 'thumbnail__video'
+    %figcaption.thumbnail__caption= attachment.caption

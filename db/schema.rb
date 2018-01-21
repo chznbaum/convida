@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118223517) do
+ActiveRecord::Schema.define(version: 20180119225657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,20 @@ ActiveRecord::Schema.define(version: 20180118223517) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subdomain"], name: "index_accounts_on_subdomain", unique: true
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "user_id"
+    t.string "content_type", null: false
+    t.text "alt"
+    t.text "caption"
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.json "attachment_upload"
+    t.index ["account_id"], name: "index_attachments_on_account_id"
+    t.index ["user_id"], name: "index_attachments_on_user_id"
   end
 
   create_table "memberships", force: :cascade do |t|
@@ -52,6 +66,8 @@ ActiveRecord::Schema.define(version: 20180118223517) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "attachments", "accounts"
+  add_foreign_key "attachments", "users"
   add_foreign_key "memberships", "accounts"
   add_foreign_key "memberships", "users"
 end
