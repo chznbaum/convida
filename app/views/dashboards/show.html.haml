@@ -9,3 +9,14 @@
     - elsif attachment.content_type.include? 'video'
       = video_tag attachment.attachment_upload, controls: true, class: 'thumbnail__video'
     %figcaption.thumbnail__caption= attachment.caption
+%h2= "Albums"
+- @albums.each do |album|
+  %h3= album.title if album.title
+  %p= album.description if album.description
+  - album.attachments.each do |album_attachment|
+    %figure.thumbnail
+      - if album_attachment.content_type.include? 'image'
+        = image_tag album_attachment.attachment_upload.thumbnail, alt: album_attachment.alt, class: 'thumbnail__image'
+      - elsif album_attachment.content_type.include? 'video'
+        = video_tag album_attachment.attachment_upload, controls: true, class: 'thumbnail__video'
+      %figcaption.thumbnail__caption= album_attachment.caption

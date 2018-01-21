@@ -3,5 +3,6 @@ class DashboardsController < ApplicationController
   
   def show
     @attachments = @account.attachments.by_recent
+    @albums = @account.albums.by_recent
   end
 end

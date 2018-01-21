@@ -9,4 +9,5 @@ class Account < ApplicationRecord
   has_one :owner, through: :owner_membership, source: :user, class_name: 'User'
   accepts_nested_attributes_for :owner
   has_many :attachments
+  has_many :albums
 end

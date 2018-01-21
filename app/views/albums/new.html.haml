@@ -1,0 +1,18 @@
+= form_for @album, url: album_path do |f|
+  = f.hidden_field :user_id, value: current_user.id
+  = f.label :title
+  = f.text_field :title
+  = f.label :description
+  = f.text_area :description
+  = f.fields_for :attachments, @album.attachments_for_form do |attachment|
+    = attachment.hidden_field :account_id, value: @album.account.id
+    = attachment.hidden_field :user_id, value: current_user.id
+    = attachment.label :attachment_upload
+    = attachment.file_field :attachment_upload
+    = attachment.label :alt
+    = attachment.text_field :alt
+    = attachment.label :caption
+    = attachment.text_field :caption
+    = attachment.hidden_field :status, value: "Approved"
+  = f.submit
+      
