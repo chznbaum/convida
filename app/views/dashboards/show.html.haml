@@ -10,6 +10,7 @@
       = video_tag attachment.attachment_upload, controls: true, class: 'thumbnail__video'
     %figcaption.thumbnail__caption= attachment.caption
 %h2= "Albums"
+= link_to 'Create album', new_album_path
 - @albums.each do |album|
   %h3= album.title if album.title
   %p= album.description if album.description

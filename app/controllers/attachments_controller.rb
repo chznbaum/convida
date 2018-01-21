@@ -19,6 +19,6 @@ class AttachmentsController < ApplicationController
   private
 
   def attachment_params
-    params.require(:attachment).permit(:user_id, :account_id, :attachment_upload, :content_type, :alt, :caption, :status, :attachment_upload_cache)
+    params.require(:attachment).permit(:user_id, :account_id, :attachment_upload, :content_type, :alt, :caption, :status)
   end
 end

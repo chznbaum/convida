@@ -1,5 +1,5 @@
 class Attachment < ApplicationRecord
-  validates_presence_of :attachment_upload, :status, :content_type
+  validates_presence_of :attachment_upload, :status
 
   mount_uploader :attachment_upload, AttachmentUploader
 

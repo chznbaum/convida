@@ -2,12 +2,7 @@ class Album < ApplicationRecord
   belongs_to :account
   belongs_to :user
   has_many :attachments
-  accepts_nested_attributes_for :attachments
-
-  def attachments_for_form
-    collection = attachments.where(album_id: id)
-    collection.any? ? collection : attachments.build
-  end
+  accepts_nested_attributes_for :attachments, reject_if: proc { |attrs| attrs['attachment_upload'].blank? && attrs['attachment_upload_cache'].blank? }
 
   def set_user!(user)
     self.user_id = user.id

@@ -4,15 +4,11 @@ class AlbumsController < ApplicationController
 
   def new
     @album = @account.albums.new
-    @album.attachments.build
+    4.times { @album.attachments.build }
   end
 
   def create
     @album = @account.albums.new(album_params)
-
-    @album.save!
-
-    byebug
 
     if @album.save
       redirect_to subdomain_root_url, notice: 'Attachment was successfully saved.'
