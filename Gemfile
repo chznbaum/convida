@@ -37,6 +37,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
   # Fake data for seeding
   gem 'faker', '~> 1.8', '>= 1.8.7'
 end
@@ -63,3 +64,4 @@ gem 'devise', '~> 4.4'
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'mini_magick', '~> 4.8'
 gem 'carrierwave-imageoptimizer', '~> 1.4'
+gem 'carrierwave-aws', '~> 1.3'
