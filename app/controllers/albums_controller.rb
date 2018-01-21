@@ -2,6 +2,10 @@ class AlbumsController < ApplicationController
   before_action :require_account!
   before_action :authenticate_user!
 
+  def show
+    @album = @account.albums.find(params[:id])
+  end
+
   def new
     @album = @account.albums.new
     4.times { @album.attachments.build }

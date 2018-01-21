@@ -1,0 +1,6 @@
+- if @attachment.content_type.include? 'image'
+  = image_tag @attachment.attachment_upload.thumbnail, alt: @attachment.alt
+- elsif @attachment.content_type.include? 'video'
+  = video_tag @attachment.attachment_upload, controls: true
+%blockquote= @attachment.caption
+= link_to 'Back to dashboard', subdomain_root_url

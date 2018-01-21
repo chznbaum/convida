@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resource :account, only: [:new, :create]
 
   resource :attachment, only: [:new, :create]
+  get 'attachment/:id', to: 'attachments#show', as: 'attachment_show'
   resource :album, only: [:new, :create]
+  get 'album/:id', to: 'albums#show', as: 'album_show'
 
   constraints SubdomainRequired do
     root to: 'dashboards#show', as: 'subdomain_root'

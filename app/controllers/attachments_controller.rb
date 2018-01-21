@@ -2,6 +2,10 @@ class AttachmentsController < ApplicationController
   before_action :require_account!
   before_action :authenticate_user!
 
+  def show
+    @attachment = @account.attachments.find(params[:id])
+  end
+
   def new
     @attachment = @account.attachments.new
   end
