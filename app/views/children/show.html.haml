@@ -1,0 +1,11 @@
+%h1= @child.first_name
+%p= @child.birthdate
+- @child.attachments.each do |attachment|
+  = link_to attachment_show_path(attachment) do
+    %figure.thumbnail
+      - if attachment.content_type.include? 'image'
+        = image_tag attachment.attachment_upload.thumbnail, alt: attachment.alt, class: 'thumbnail__image'
+      - elsif attachment.content_type.include? 'video'
+        = video_tag attachment.attachment_upload, controls: true, class: 'thumbnail__video'
+      %figcaption.thumbnail__caption= attachment.caption
+= link_to 'Back to children', children_path

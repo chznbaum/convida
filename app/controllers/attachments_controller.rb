@@ -1,4 +1,5 @@
 class AttachmentsController < ApplicationController
+  before_action :set_account
   before_action :require_account!
   before_action :authenticate_user!
 
@@ -21,6 +22,10 @@ class AttachmentsController < ApplicationController
   end
 
   private
+  
+  def set_account
+    @account = Account.find_by(subdomain: request.subdomain)
+  end
 
   def attachment_params
     params.require(:attachment).permit(:user_id, :account_id, :attachment_upload, :content_type, :alt, :caption, :status)

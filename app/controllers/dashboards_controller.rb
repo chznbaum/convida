@@ -2,7 +2,8 @@ class DashboardsController < ApplicationController
   before_action :authenticate_user!
   
   def show
-    @attachments = @account.attachments.by_recent
-    @albums = @account.albums.by_recent
+    @account = { account: Account.includes(:attachments, albums: :attachments).find_by(subdomain: request.subdomain).serializable_hash(include: [:attachments, albums: { include: :attachments }]) }[:account]
+    @attachments = @account['attachments']
+    @albums = @account['albums']
   end
 end

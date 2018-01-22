@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180121025735) do
+ActiveRecord::Schema.define(version: 20180122000031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,28 @@ ActiveRecord::Schema.define(version: 20180121025735) do
     t.index ["user_id"], name: "index_attachments_on_user_id"
   end
 
+  create_table "child_tags", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "child_id"
+    t.bigint "attachment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_child_tags_on_account_id"
+    t.index ["attachment_id"], name: "index_child_tags_on_attachment_id"
+    t.index ["child_id"], name: "index_child_tags_on_child_id"
+  end
+
+  create_table "children", force: :cascade do |t|
+    t.bigint "account_id"
+    t.string "first_name", default: "", null: false
+    t.date "birthdate", null: false
+    t.string "pronoun", default: "they", null: false
+    t.json "avatar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_children_on_account_id"
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.bigint "account_id"
     t.bigint "user_id"
@@ -84,6 +106,10 @@ ActiveRecord::Schema.define(version: 20180121025735) do
   add_foreign_key "attachments", "accounts"
   add_foreign_key "attachments", "albums"
   add_foreign_key "attachments", "users"
+  add_foreign_key "child_tags", "accounts"
+  add_foreign_key "child_tags", "attachments"
+  add_foreign_key "child_tags", "children"
+  add_foreign_key "children", "accounts"
   add_foreign_key "memberships", "accounts"
   add_foreign_key "memberships", "users"
 end

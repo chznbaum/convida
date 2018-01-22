@@ -1,4 +1,5 @@
 class Attachment < ApplicationRecord
+  include ActiveModel::Serializers::JSON
   validates_presence_of :attachment_upload, :status
 
   mount_uploader :attachment_upload, AttachmentUploader
@@ -8,11 +9,8 @@ class Attachment < ApplicationRecord
   belongs_to :account
   belongs_to :user
   belongs_to :album, optional: true
-
-  def set_user!(user)
-    self.user_id = user.id
-    self.save!
-  end
+  has_many :child_tags, dependent: :destroy
+  has_many :children, through: :child_tags
 
   def self.by_recent
     order(created_at: :desc, id: :desc)

@@ -1,0 +1,14 @@
+= form_for @child do |f|
+  - if @child.errors.any?
+    %h2= "#{ pluralize @child.errors.count, 'error' } prevented this attachment from being saved:"
+    %ul
+      - @child.errors.full_messages.each do |message|
+        %li= message
+  = f.label :first_name
+  = f.text_field :first_name
+  = f.label :birthdate
+  = f.date_field :birthdate
+  = f.label :pronoun
+  = f.text_field :pronoun
+  = f.submit
+= link_to "Cancel", subdomain_root_url

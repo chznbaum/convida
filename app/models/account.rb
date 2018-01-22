@@ -1,4 +1,5 @@
 class Account < ApplicationRecord
+  include ActiveModel::Serializers::JSON
   validates :name, :subdomain, presence: true
   validates :subdomain,
             format: { with: /\A[a-z][a-z0-9\-]+[a-z0-9]\Z/ },
@@ -10,4 +11,5 @@ class Account < ApplicationRecord
   accepts_nested_attributes_for :owner
   has_many :attachments
   has_many :albums
+  has_many :children
 end
